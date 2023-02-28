@@ -9,8 +9,16 @@
 #
 # Setting this up will mean pressing "Windows key + S" (or Super + S) will allow you to select a region of your screen for a screenshot, and upload it as a timestamped .png to your vm (vault by default in this script)
 
+
+
+
 # A Qube to copy the file to. Edit as you desire
-QUBE="vault"
+
+ID=`xdotool getwindowfocus`
+QUBE=`xprop _QUBES_VMNAME -id $ID|cut -f2 -d\" `
+notify-send "copy to qube:" $QUBE
+
+
 
 # A little help from here on this: https://tecadmin.net/get-current-date-and-time-in-bash/
 CURRENTTIME=`date +"%Y-%m-%d_%T"`
